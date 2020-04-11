@@ -1,0 +1,21 @@
+{% extends "wsasd5/base.html" %}
+
+{% block content %}
+
+{% if error_message %} <p><strong> {{ error_message }} </strong></p> {% endif %}
+
+<div class="container">
+    <div class="row">
+	<div class="col-sm-4 mx-auto">
+            <form enctype="multipart/form-data" class="form-group row" action="" method="post">
+	       {% csrf_token %}
+	         {{ form.as_p }}
+		 <div class="col-sm-4">
+		     <input class="btn btn-danger btn-sm" type="submit" value="Change">
+		 </div>
+            </form>
+         </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "wsasd5/base.html" %}
+
+{% block javascript %}
+
+
+<script>
+
+$(document).ready(function(){
+	$('#fibonacciInputForm').submit(function(e) {
+		e.preventDefault();
+		var form = $(this);
+		var url = form.attr('action');
+	
+		$.ajax({
+		 data: form.serialize(),
+		 type:form.attr('method'),
+		 url:url,
+	         success: function(data) {
+			$('#fib_json').html(data.fibonacci);
+			}
+		 });
+	 })
+});
+
+
+</script>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+		<form class="form-vertical" id="fibonacciInputForm" role="form" action="{% url 'fibonacci_gen' %}" method="POST" >
+			{% csrf_token %}
+			<fieldset>
+			<div class="form-group">
+				<label for="fibonacciInput"> How many fibonacci numbers do you want? </label>
+				<input type="text" class="form-control" id="fibonacciInput" placeholder="eg. 10, 20, 30 ... (+ve integers only)" name="fibonacci">
+			</div>
+			<button type="submit" class="btn btn-primary btn-sm"> Generate </button>
+			</fieldset>
+		</form>
+    </div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md" id="fib_json">
+	</div>
+</div>
+{% endblock %}
