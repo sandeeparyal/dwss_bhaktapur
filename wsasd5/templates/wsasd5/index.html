@@ -3,9 +3,9 @@
 {% block title %} Welcome to Water Supply and Sanitation Division Number 5, Lokanthali! {% endblock %}
 {% block content %}
 
-<div class="container">
+<div class="container-fluid px-5">
     <div class="row">
-        <div class="col-md-10 text-center border border-dark">
+        <div class="col-md-9 text-center border border-dark p-0 mb-4 mb-md-0">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -36,29 +36,31 @@
             </div>
         </div>
 
-        <div class="col-md-2">
-		{#            <p class="d-block p-2 bg-primary text-center text-white"> <a class="text-white" href="{% url 'fibonacci_gen' %}" >सूचनाहरु</a></p>#}
-            <div>
-                {% for i in news %}
-                    <p class="text-left text-primary"> {{ i.title }} </p>
-                    <p class="text-justify"> {{ i.body|truncatewords:15 }} </p>
-                    <small> Published on:<mark>{{ i.published_date }} </mark></small>
-                    <hr>
-                {% endfor %}
+        <div class="col-md-3">
+            <div class="notice-board">
+                <h4 class="p-2 notice-board-header text-center text-white">सूचनाहरु</h4>
+                <div class="p-3">
+                    {% for i in news %}
+                        <a class="text-left text-primary font-weight-bold"> {{ i.title }} </a>
+                        <p class="text-justify"> {{ i.body|truncatewords:15 }} </p>
+                        <small> Published on:<mark>{{ i.published_date }} </mark></small>
+                        <hr>
+                    {% endfor %}
+                </div>
             </div>
         <div>
     </div>
 </div>
 
-<div class="container">
+<div class="container-fluid my-3">
     <div class="row">
-        <div class="col-md-10">
-            <a href="{% url 'employee_list' %}" > कर्मचारी विवरण हेर्नुहोस्! </a><br>
+        <div class="col-md-9 mb-4 mb-md-0">
+            <a class="btn btn-primary" href="{% url 'employee_list' %}" > कर्मचारी विवरण हेर्नुहोस्! </a><br>
         </div>
 
-        <div class="col-md-2">
-            <a href="#" >डिभिजनका गतिविधिहरु</a>
-            <a href="#" >टेण्डर आह्वान</a>
+        <div class="col-md-3">
+            <a class="btn btn-primary" href="#" >डिभिजनका गतिविधिहरु</a>
+            <a class="btn btn-primary d-inline-block" href="#" >टेण्डर आह्वान</a>
         </div>
     </div>
 </div>
