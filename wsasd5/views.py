@@ -20,6 +20,10 @@ def employee_list(request):
         raise Http404("Question does not exist")
     return render(request, 'wsasd5/employee_list.html', {'employee_list': employee_list })
 
+'''
+### The codes below were only for editing purpose, since the site is like a newspaper, they are not required.
+
+
 def employee_edit(request, employee_id):
     try:
         employee = get_object_or_404(Employee, employee_id = employee_id)
@@ -41,6 +45,7 @@ def employee_edit(request, employee_id):
         else:
             form = EmployeeForm(initial={'employee_firstname': employee.employee_firstname, 'employee_lastname': employee.employee_lastname, 'employee_id': employee.employee_id, 'employee_photo':employee.employee_photo, 'employee_cv':employee.employee_cv, 'employee_dob': employee.employee_dob, 'employee_position':employee.employee_position})
             return render(request, 'wsasd5/employee_edit.html', {'form': form})
+
 
 def employee_add(request):
     if request.method == 'POST':
@@ -69,6 +74,9 @@ def employee_delete(request, employee_id):
     except Employee.DoesNotExist:
         raise Http404("Employee does not exist")
 
+
+
+
 def senior_employee(request):
     employees = Employee.objects.all()
     names = []
@@ -96,4 +104,5 @@ def fibonacci_gen(request):
             'fibonacci': fibonacci_numbers(fibonacci_input)
             }
         return JsonResponse(data)
+'''
 
