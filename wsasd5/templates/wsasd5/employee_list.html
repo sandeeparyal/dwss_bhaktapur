@@ -1,86 +1,54 @@
 {% extends "wsasd5/base.html" %}	
 {% block content %}
+{% load static %}
 
 
-<div class="container">
-	<div class="row border border-light my-4 bg-primary text-white h5 text-center">
-		<div class="col-md-2 border border-light">
-		       स‌ंकेत नं:
-		</div>
+<div class="table-responsive p-5">
+<table class="table table-bordered table-striped main-table">
+<tr>
+	<th>स‌ंकेत नं:</th>
+	<th>नाम</th>
+	<th>जन्म मिति</th>
+	<th>पद</th>
+	<th>उमेर</th>
+	<th>तस्विर</th>
+</tr>
 
-		<div class="col-md-3 border border-light">
-    		       नाम
-		</div>
 
-		<div class="col-md-2 border border-light">
-    		       जन्म मिति
-		</div>
 
-		<div class="col-md-2 border border-light">
-	                     पद
-		</div>
-
-		<div class="col-md-1 border border-light">
-		       उमेर
-		</div>
-		<div class="col-md-2 border border-light">
-        	                   तस्विर
-                </div>
-    	</div>
-</div>
 
 {% for i in employee_list %}
 
-<div class="container">
-	<div class="row mb-3 text-center">
-		<div class="col-md-2">
-			 {{ i.employee_id }}
-		</div>
-
-		<div class="col-md-3">
-    			 {{ i.employee_firstname }}
-    			 {{ i.employee_lastname }}
-		</div>
-
-		<div class="col-md-2">
-    			 {{ i.employee_dob }}
-		</div>
-
-		<div class="col-md-2">
-			 {{ i.employee_position.get_position_title_display }}
-		</div>
-
-		<div class="col-md-1">
-			 {{ i.is_over_18 }}
-		</div>
-
+<tr>
+	<td>{{ i.employee_id }}</td>
+	<td>{{ i.employee_firstname }} {{i.employee_lastname }}</td>
+	<td>{{ i.employee_dob }}</td>
+	<td>{{ i.employee_position.get_position_title_display }}</td>
+	<td>{{ i.is_over_18 }}</td>
+	<td>
 		{% if i.photo_or_cv_exists %}
-		<div class="col-md-2 ">
-        		<img src = "{{ i.employee_photo.url }}" class="img-fluid rounded float-right" alt="Picture here!">
-		    </div>
+	    	<img style="height:100px;width:auto" src = "{{ i.employee_photo.url }}" class="img-fluid rounded d-block mx-auto" alt="Picture here!">
+		{% else %}
+			<img style="height:100px;width:auto" src = "{% static 'wsasd5/images/profile.jpeg'%}" class="img-fluid rounded d-block mx-auto" alt="Picture here!">
 		{% endif %}
-    	</div>
-
-</div>
-
-<div class="container">
-   <div class="row">
-	<div class="ml-auto h5">
-          <a class="btn btn-primary btn-sm" href="{% url 'employee_edit' employee_id=i.employee_id %}"> Edit </a>
-	  <a class="btn btn-danger btn-sm" href="{% url 'employee_delete' employee_id=i.employee_id %}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
-	</div>
-    </div>
-	
-</div>
-
+		<div class="d-inline-block text-center">
+        <a class="btn btn-primary btn-sm" href="{% url 'employee_edit' employee_id=i.employee_id %}"> Edit </a>
+		<a class="btn btn-danger btn-sm d-inline-block" href="{% url 'employee_delete' employee_id=i.employee_id %}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+		</div>
+	</td>
+</tr>
+    			 
 {% endfor %}
+</table>
+</div>
+
 
 
 <div class="container">
    <div class="row">
-     <div class="h5 mr-auto">
-	<a class="btn btn-outline-dark btn-sm" href="{% url 'employee_add' %}">कर्मचारी थप्नुहोस्</a>
-      </div>
+   		<div class="h5 mr-auto">
+			<a class="btn btn-outline-dark btn-sm" href="{% url 'employee_add' %}">कर्मचारी थप्नुहोस्</a>
+     	</div>
    </div>
 </div>
 
