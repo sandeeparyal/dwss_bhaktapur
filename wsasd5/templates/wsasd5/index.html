@@ -42,7 +42,7 @@
                 <div class="p-3">
                     {% for i in news %}
                         <a class="text-left text-primary font-weight-bold"> {{ i.title }} </a>
-                        <p class="text-justify"> {{ i.body|truncatewords:15 }} </p>
+                        <p class="text-justify"> {{ i.body|safe|truncatewords:15 }} </p>
                         <small> Published on:<mark>{{ i.published_date }} </mark></small>
                         <hr>
                     {% endfor %}

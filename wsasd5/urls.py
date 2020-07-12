@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.views.static import serve
 from django.conf.urls import url
@@ -14,4 +14,5 @@ urlpatterns = [
 #        path('<employee_id>/employee_delete/', views.employee_delete, name='employee_delete'),
 #        path('senior_employee/', views.senior_employee, name='senior_employee'),
 #        path('fibonacci_gen/', views.fibonacci_gen, name='fibonacci_gen'),
+        path('ckeditor/',include('ckeditor_uploader.urls')),
 ] 

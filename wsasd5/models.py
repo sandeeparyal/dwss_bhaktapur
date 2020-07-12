@@ -1,5 +1,6 @@
 from datetime import date
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 
@@ -52,7 +53,7 @@ class Employee(models.Model):
     
 class News(models.Model):
     title = models.CharField(max_length=200)
-    body = models.TextField()
+    body = RichTextUploadingField()
     published_date = models.DateTimeField()
     short_text = models.CharField(max_length=120)
         
