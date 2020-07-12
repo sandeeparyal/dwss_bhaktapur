@@ -16,3 +16,7 @@ div.breadcrumbs,
 #content-related .module h2 {
     color: white !important;
 }
+
+caption {
+    caption-side: top;
+}
