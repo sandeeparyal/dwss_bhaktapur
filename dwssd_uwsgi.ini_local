@@ -1,0 +1,34 @@
+# mysite_uwsgi.ini file
+[uwsgi]
+
+# Django-related settings
+# the base directory (full path)
+#
+
+#At the server
+#chdir           = /home/dwssd/dwss_bhaktapur
+
+#At the local machine
+chdir           = /home/sandeeparyal/dwss_bhaktapur
+
+# Django's wsgi file
+module          = dwssd.wsgi
+# the virtualenv (full path)
+#home            = /home/sandeep/sahari
+
+# process-related settings
+# master
+master          = true
+# maximum number of worker processes
+processes       = 4
+# the socket (use the full path to be safe
+#At the server
+#socket          = /home/dwssd/dwss_bhaktapur/dwssd.sock
+#At the local machine
+socket          = /home/sandeeparyal/dwss_bhaktapur/dwssd.sock
+# ... with appropriate permissions - may be needed
+# chmod-socket    = 664
+chmod-socket     = 666
+# clear environment on exit
+vacuum          = true
+
