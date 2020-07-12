@@ -22,3 +22,8 @@ urlpatterns = [
         path('', include('wsasd5.urls')),
         path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+admin.site.site_header = "खानेपानी तथा सरसफाई डिभिजन नं ५"
+admin.site.site_title = "खानेपानी तथा सरसफाई डिभिजन नं ५ Admin Portal"
+admin.site.index_title = "खानेपानी तथा सरसफाई डिभिजन नं ५"

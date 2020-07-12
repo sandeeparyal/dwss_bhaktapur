@@ -1,0 +1,18 @@
+#header {
+    background: #26477b;
+}
+
+a.button,
+.inline-group h2,
+div.breadcrumbs,
+.module h2,
+.module caption,
+.selector-chosen h2,
+#user-tools a:hover {
+    background: #343a40 !important;
+}
+
+.selector .selector-available h2,
+#content-related .module h2 {
+    color: white !important;
+}
