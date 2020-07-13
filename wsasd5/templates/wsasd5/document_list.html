@@ -1,0 +1,30 @@
+{% extends "wsasd5/base.html" %}	
+{% block content %}
+{% load static %}
+
+
+<div class="table-responsive p-5">
+<table class="table table-bordered table-striped main-table">
+<tr>
+	<th>स‌ंकेत नं:</th>
+	<th>नाम</th>
+	<th>जन्म मिति</th>
+	<th>पद</th>
+	<th>उमेर</th>
+	<th>तस्विर</th>
+</tr>
+
+
+
+
+{% for i in document_list %}
+
+<tr>
+	<td>{{ i.id }}</td>
+	<td>{{ i.document_date }} </td>
+	<td>{{ i.document_title }}</td>    			 
+{% endfor %}
+</table>
+</div>
+
+{% endblock %}
