@@ -60,3 +60,24 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
+class Document(models.Model):
+    DOCUMENT_TITLE_CHOICES = [
+            ('LAW', 'ऐन'),
+            ('TN', 'टेन्डर आव्ह्वान'),
+            ('OD', 'अन्य दस्तावेजहरु'),
+            ]
+    document_path = models.FileField(blank=True, null=True, upload_to='documents', default='/media/documents/django.pdf')
+    document_title = models.CharField(max_length=200, choices=DOCUMENT_TITLE_CHOICES, default='OD')
+    document_date = models.DateField('date created', default=date.today, blank=True, null=True)
+    
+    def __str__(self):
+        return self.document_title
+    
+
+
+
+
+
+
+
+

@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.forms import modelform_factory
 
-from .models import Employee, News
+from .models import Employee, News, Document
 from .forms import EmployeeForm
 
 
@@ -19,6 +19,13 @@ def employee_list(request):
     except Employee.DoesNotExist:
         raise Http404("Question does not exist")
     return render(request, 'wsasd5/employee_list.html', {'employee_list': employee_list })
+
+def document_list(request):
+    try:
+        document_list = Document.objects.all().order_by('document_date')
+    except Document.DoesNotExist:
+        raise Http404("Document does not exist")
+    return render(request, 'wsasd5/document_list.html', {'document_list': document_list })
 
 '''
 ### The codes below were only for editing purpose, since the site is like a newspaper, they are not required.
