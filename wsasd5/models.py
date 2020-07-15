@@ -70,7 +70,8 @@ class Document(models.Model):
             ('OD', 'अन्य दस्तावेजहरु'),
             ]
     document_path = models.FileField(blank=True, null=True, upload_to='documents', default='/media/documents/django.pdf')
-    document_title = models.CharField(max_length=200, choices=DOCUMENT_TITLE_CHOICES, default='OD')
+    document_category= models.CharField(max_length=50, choices=DOCUMENT_TITLE_CHOICES, default='OD')
+    document_title = models.CharField(max_length=200, null=False)
     document_date = models.DateField('date created', default=date.today, blank=True, null=True)
     
     def __str__(self):
