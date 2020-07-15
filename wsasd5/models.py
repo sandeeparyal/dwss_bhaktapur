@@ -36,7 +36,10 @@ class Employee(models.Model):
     employee_cv = models.FileField(blank=True, null=True, upload_to='resumes', default='/media/resumes/django.pdf')
     employee_photo = models.ImageField(blank=True, null=True, upload_to='photos', default='/media/photos/test_image.png')
     employee_dob = models.DateField('date_of_birth', default=date.today, blank=True, null=True)
+    employee_section = models.CharField(max_length=100, unique=False, default=' ')
+    employee_telephone = models.CharField(max_length=10, unique=False, default=' ')
     employee_position = models.ForeignKey(Position, on_delete=models.CASCADE)
+
 
     def is_over_18(self):
         if(self.employee_dob):

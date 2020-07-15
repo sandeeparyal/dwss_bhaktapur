@@ -6,12 +6,9 @@
 <div class="table-responsive p-5">
 <table class="table table-bordered table-striped main-table">
 <tr>
-	<th>स‌ंकेत नं:</th>
-	<th>नाम</th>
-	<th>जन्म मिति</th>
-	<th>पद</th>
-	<th>उमेर</th>
-	<th>तस्विर</th>
+	<th>क्र.सं:</th>
+	<th>शिर्षक</th>
+	<th>प्रकाशन मिति</th>
 </tr>
 
 
@@ -21,8 +18,9 @@
 
 <tr>
 	<td>{{ i.id }}</td>
+	<td>{{ i.document_title }}</td>
 	<td>{{ i.document_date }} </td>
-	<td>{{ i.document_title }}</td>    			 
+</tr>
 {% endfor %}
 </table>
 </div>
