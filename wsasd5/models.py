@@ -6,22 +6,28 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class Position(models.Model):
     POSITION_TITLE_CHOICES = [
-            ('SC', 'Secretary'),
-            ('JS', 'Joint Secretary'),
-            ('US', 'Under Secretary'),
-            ('SO', 'Section Officer'),
-            ('AO', 'Assistant Officer'),
+            ('1CH', 'डिभिजन प्रमुख'),
+            ('2SE', 'सुई'),
+            ('3SDE', 'सिडिई'),
+            ('4ERE', 'ईन्जिनियर आठौं'),
+            ('5ERS', 'ईन्जिनियर सातौं'),
+            ('6AOS', 'प्रशासन अधिकृत छैठौं'),
+            ('7ACOS', 'लेखा अधिकृत छैठौं'),
+            ('8CO', 'कम्प्युटर अधिकृत छैठौं'),
+            ('9OT', 'अधिकृत छैठौं'),
+            ('10SUBE', 'सब ईन्जिनियर'),
+            ('11TEC', 'खा पा स टे'),
             ]
 
     POSITION_SERVICE_CHOICES = [
             ('AD', 'Administration'),
             ('EN', 'Engineering'),
             ('LG', 'Law'),
-            ('MS', 'Miscellaneous'),
-            ('SE', 'Cabinet'),
+            ('ACC', 'Account'),
+            ('MSC', 'Miscellaneous'),
             ]
     
-    position_title = models.CharField(max_length=2, choices=POSITION_TITLE_CHOICES, default='SO')
+    position_title = models.CharField(max_length=10, choices=POSITION_TITLE_CHOICES, default='5ERS')
     position_service = models.CharField(max_length=200, choices=POSITION_SERVICE_CHOICES)
     position_group = models.CharField(max_length=200, null=True, blank=True)
     position_subgroup = models.CharField(max_length=200, null=True, blank=True)
@@ -32,23 +38,10 @@ class Position(models.Model):
 class Employee(models.Model):
     employee_lastname = models.CharField(max_length=200)
     employee_firstname = models.CharField(max_length=200)
-    employee_id = models.CharField(max_length=10, unique=True)
-    employee_cv = models.FileField(blank=True, null=True, upload_to='resumes', default='/media/resumes/django.pdf')
-    employee_photo = models.ImageField(blank=True, null=True, upload_to='photos', default='/media/photos/test_image.png')
-    employee_dob = models.DateField('date_of_birth', default=date.today, blank=True, null=True)
     employee_section = models.CharField(max_length=100, unique=False, default=' ')
     employee_telephone = models.CharField(max_length=10, unique=False, default=' ')
     employee_position = models.ForeignKey(Position, on_delete=models.CASCADE)
 
-
-    def is_over_18(self):
-        if(self.employee_dob):
-            today = date.today()
-            return ( today.year - self.employee_dob.year - ((today.month, today.day) <(self.employee_dob.month, self.employee_dob.day)))
-
-    def photo_or_cv_exists(self):
-        if(self.employee_photo and self.employee_cv):
-            return True 
 
     def __str__(self):
         return self.employee_firstname

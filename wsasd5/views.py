@@ -15,7 +15,7 @@ def index(request):
 
 def employee_list(request):
     try:
-        employee_list = Employee.objects.all().order_by('employee_id')
+        employee_list = Employee.objects.all().order_by('employee_position__position_title')
     except Employee.DoesNotExist:
         raise Http404("Question does not exist")
     return render(request, 'wsasd5/employee_list.html', {'employee_list': employee_list })

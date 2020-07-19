@@ -19,7 +19,7 @@
 {% for i in employee_list %}
 
 <tr>
-	<td>{{ loop.counter }}</td>
+	<td>{{ forloop.counter }}</td>
 	<td>{{ i.employee_firstname }} {{i.employee_lastname }}</td>
 	<td>{{ i.employee_position.get_position_title_display }}</td>
 	<td>{{ i.employee_section }}
