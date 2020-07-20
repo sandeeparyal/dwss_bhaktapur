@@ -3,5 +3,11 @@
 /var/
 dwssd_uwsgi.ini
 mcq_quiz/
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 db.sqlite3
 
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
