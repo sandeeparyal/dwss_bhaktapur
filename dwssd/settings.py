@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'wsasd5',
     'ckeditor',
     'ckeditor_uploader',
+    'mcq_quiz',
 ]
 
 

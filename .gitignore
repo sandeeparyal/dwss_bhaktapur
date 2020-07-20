@@ -2,3 +2,6 @@
 **/__pycache__/
 /var/
 dwssd_uwsgi.ini
+mcq_quiz/
+db.sqlite3
+
